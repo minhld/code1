@@ -1,4 +1,4 @@
-/*
+package com.minhld.dp;/*
 Solution: build the below matrix
 each element is min possible number of elements
 - 1 means not available,

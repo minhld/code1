@@ -1,3 +1,5 @@
+package com.minhld.dp;
+
 public class Rod extends Thread {
     public void run() {
         // int[] values = {1, 3, 7, 1, 9, 4, 2, 5, 7, 12, 2, 6, 7, 3, 9, 11, 14, 2, 12, 34, 2, 7, 53, 3, 34, 21, 29, 2, 3, 5, 6, 16 };

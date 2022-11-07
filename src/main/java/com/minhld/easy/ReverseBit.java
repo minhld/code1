@@ -1,3 +1,5 @@
+package com.minhld.easy;
+
 public class ReverseBit extends Thread {
     public void run() {
         int n = 43261596;
