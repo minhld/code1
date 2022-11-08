@@ -1,18 +1,12 @@
 package com.minhld.medium;
 
+import com.minhld.objects.ListNode;
+
 import java.util.*;
 
 public class LinkedListComponents extends Thread {
     public void run() {
 
-    }
-
-    class ListNode {
-        int val;
-        ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     public int numComponents(ListNode head, int[] nums) {
