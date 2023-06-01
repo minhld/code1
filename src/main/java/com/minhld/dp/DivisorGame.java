@@ -17,13 +17,20 @@ public class DivisorGame extends Thread {
 
     }
 
-    boolean divisorGame(int n) {
+    public boolean divisorGame(int n) {
+        if (n == 1) return false;
         int[] dp = new int[n + 1];
-        dp[1] = 1;
-        for (int i = 2; i < n; i++) {
-//            dp[i] =
+        dp[2] = 1;
+        for (int i = 2; i <= n; i++) {
+            int j = i - 1;
+            while (i - j > 0 && j > 0) {
+                if (i % j == 0 && dp[i - j] == 0) {
+                    dp[i] = 1;
+                }
+                j--;
+            }
         }
-        return false;
+        return dp[n] == 1;
     }
 
     public static void main(String args[]) {
