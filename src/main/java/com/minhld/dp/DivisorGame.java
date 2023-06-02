@@ -3,17 +3,6 @@ package com.minhld.dp;
 public class DivisorGame extends Thread {
     public void run() {
         int n = 6;
-        // 6: possible steps: 1, 2, 3
-        // n 6 6
-        // a 3 2
-        // n 3 4
-        // b 1 1
-        // n 2 3
-        // a 1 1
-        // T n 2
-        //   b 1
-        //   F
-        // 8: possible steps: 1, 2, 4
 
     }
 
