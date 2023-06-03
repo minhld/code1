@@ -12,6 +12,10 @@ public class test {
 
     }
 
+    private static void testStringBuffer() {
+        StringBuffer buff = new StringBuffer();
+    }
+
     private static void testSet1() {
         String test = "abcabcbb";
         Set<Character> set = test.chars()
