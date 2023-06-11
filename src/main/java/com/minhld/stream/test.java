@@ -1,19 +1,19 @@
 package com.minhld.stream;
 
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class test {
     public static void main(String args[]) {
         //testMap1();
-
+        testStringBuffer();
     }
 
     private static void testStringBuffer() {
-        StringBuffer buff = new StringBuffer();
+        int total = "delete".chars().reduce(0, Integer::sum);
+        int[] a = new int[] { 2, 3, 5, 7 };
+        int val = Arrays.stream(a).reduce(0, Integer::sum);
+        System.out.println("val: " + total);
     }
 
     private static void testSet1() {
