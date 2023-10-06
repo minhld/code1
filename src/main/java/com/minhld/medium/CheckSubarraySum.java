@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 public class CheckSubarraySum extends Thread {
     public void run() {
         int[] sample = {};
-        int k = 2147483640; //2147483647
+        int k = 2147483640;
         System.out.println("val = " + checkSubarraySum(sample, k));
     }
 
