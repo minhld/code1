@@ -3,6 +3,9 @@ package com.minhld.medium;
 import java.util.*;
 
 public class IntervalsBetweenIdenticalElements {
+    public long[] getDistances2(int[] arr) {
+        return null;
+    }
     public long[] getDistances(int[] arr) {
         Map<Integer, List<Integer>> map = new HashMap<>();
         long[] intvs = new long[arr.length];
@@ -15,7 +18,6 @@ public class IntervalsBetweenIdenticalElements {
                     intvs[i] += Math.abs(list.get(j) - i);
                 }
                 list.add(i);
-                map.put(arr[i], list);
             } else {
                 map.put(arr[i], new ArrayList<Integer>(List.of(i)));
             }
