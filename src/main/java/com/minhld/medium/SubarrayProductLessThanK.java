@@ -7,19 +7,14 @@ public class SubarrayProductLessThanK extends Thread {
     }
 
     public int numSubarrayProductLessThanK(int[] nums, int k) {
-        int count = 0;
-        int prod = 1;
+        int count = 0, prod = 1;
         for (int i = 0; i < nums.length; i++) {
             prod = 1;
-            System.out.print(i + ": ");
             for (int j = i; j < nums.length; j++) {
                 prod *= nums[j];
-                if (prod < k) {
-                    System.out.print(prod + "," + nums[j] + " ");
-                    count++;
-                }
+                if (prod < k) count++;
+                if (prod >= k) break;
             }
-            System.out.println();
         }
         return count;
     }
