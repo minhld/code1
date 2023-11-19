@@ -4,12 +4,27 @@ import java.util.*;
 
 public class LongestSubstringContainingVowelsEvenCounts {
 
+    public int findTheLongestSubstring(String s) {
+        int res = 0, cur = 0, n = s.length();
+        Map<Integer, Integer> seen = new HashMap<>();
+        seen.put(0, -1);
+        for (int i = 0; i < n; i++) {
+            if ("aeiou".indexOf(s.charAt(i)) >= 0) {
+                cur ^= 1 << "aeiou".indexOf(s.charAt(i)) + 1;
+            }
+            seen.putIfAbsent(cur, i);
+            res = Math.max(res, i - seen.get(cur));
+        }
+        return res;
+    }
+
+
     /**
      * brute force solution
      * @param s
      * @return
      */
-    public int findTheLongestSubstring(String s) {
+    public int findTheLongestSubstring2(String s) {
         int max = 0;
         Set<Character> set = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
         Map<Character, Integer>[] maps = new HashMap[s.length() + 1];
