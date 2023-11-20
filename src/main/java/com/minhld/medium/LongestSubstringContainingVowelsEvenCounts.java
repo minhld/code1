@@ -18,7 +18,6 @@ public class LongestSubstringContainingVowelsEvenCounts {
         return res;
     }
 
-
     /**
      * brute force solution
      * @param s
