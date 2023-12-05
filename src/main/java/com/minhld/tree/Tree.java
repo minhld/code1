@@ -1,6 +1,13 @@
 package com.minhld.tree;
 
+import lombok.Data;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+@Data
 public class Tree {
+
     Node root;
 
     public Tree(int val) {
@@ -30,6 +37,27 @@ public class Tree {
         }
     }
 
+    public void delete(int val) {
+        Node c = root, p = null;
+        boolean isLeft = false;
+        while (c != null && c.val != val) {
+            p = c;
+            isLeft = val < c.val;
+            if (val < c.val) c = c.left;
+            else c = c.right;
+        }
+        if (c == null || p == null) return;
+        if (c.left != null && c.right == null) {
+            if (isLeft) p.left = c.left;
+            else p.right = c.left;
+        } else if (c.right != null){
+
+        }
+
+        if (isLeft) p.left = c.left;
+        if (c.right == null) p.right = c.left;
+    }
+
     public Node find(int val) {
         Node c = root;
         if (c.val == val) return c;
@@ -39,5 +67,23 @@ public class Tree {
             if (c != null && c.val == val) return c;
         }
         return null;
+    }
+
+    public void travel(Node n) {
+        if (n == null) return;
+        travel(n.left);
+        System.out.print(n.val + " ");
+        travel(n.right);
+    }
+
+    public void print() {
+        Queue<Node> q = new LinkedList<>();
+        Node c = root;
+        q.add(c);
+        while (!q.isEmpty()) {
+            c = q.poll();
+            if (c.left != null) q.add(c.left);
+            if (c.right != null) q.add (c.right);
+        }
     }
 }

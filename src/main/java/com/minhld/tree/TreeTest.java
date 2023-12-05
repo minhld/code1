@@ -16,5 +16,6 @@ public class TreeTest {
         t.insert(57);
         t.insert(60);
         System.out.println(t.find(51));
+        t.travel(t.root);
     }
 }
