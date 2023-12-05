@@ -1,6 +1,14 @@
 package com.minhld.tree;
 
 public class TreeTest {
+    /* a sample tree
+                    63
+          27                  80
+     13         51        70        92
+        26    33    58            82
+                  57   60
+     */
+
     public static void main(String[] args) {
         Tree t = new Tree(63);
         t.insert(27);
@@ -16,6 +24,7 @@ public class TreeTest {
         t.insert(57);
         t.insert(60);
         System.out.println(t.find(51));
+        t.print();
         t.travel(t.root);
     }
 }

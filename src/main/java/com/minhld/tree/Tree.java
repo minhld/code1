@@ -80,10 +80,16 @@ public class Tree {
         Queue<Node> q = new LinkedList<>();
         Node c = root;
         q.add(c);
+        int qSize;
         while (!q.isEmpty()) {
-            c = q.poll();
-            if (c.left != null) q.add(c.left);
-            if (c.right != null) q.add (c.right);
+            qSize = q.size();
+            while (--qSize >= 0) {
+                c = q.poll();
+                System.out.print(c.val + " ");
+                if (c.left != null) q.add(c.left);
+                if (c.right != null) q.add(c.right);
+            }
+            System.out.println();
         }
     }
 }
