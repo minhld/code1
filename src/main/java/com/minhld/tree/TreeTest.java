@@ -4,10 +4,12 @@ public class TreeTest {
     /* a sample tree
                     63
           27                  80
-     13         51        70        92
-        26    33    58            82
-                  57   60
-     */
+     13          51        70        92
+        18    33     61         82
+      15   20       57     62
+    14   17    54       58
+                55       60
+    */
 
     public static void main(String[] args) {
         Tree t = new Tree(63);
@@ -17,14 +19,25 @@ public class TreeTest {
         t.insert(51);
         t.insert(70);
         t.insert(92);
-        t.insert(26);
+        t.insert(18);
         t.insert(33);
-        t.insert(58);
+        t.insert(61);
         t.insert(82);
+        t.insert(15);
+        t.insert(20);
         t.insert(57);
+        t.insert(62);
+        t.insert(14);
+        t.insert(17);
+        t.insert(54);
+        t.insert(58);
+        t.insert(55);
         t.insert(60);
-        System.out.println(t.find(51));
+        // System.out.println(t.find(51));
         t.print();
-        t.travel(t.root);
+        t.delete(15);
+        t.print();
+        // t.delete(58);
+        // t.travel(t.root);
     }
 }

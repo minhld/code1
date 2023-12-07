@@ -47,15 +47,23 @@ public class Tree {
             else c = c.right;
         }
         if (c == null || p == null) return;
-        if (c.left != null && c.right == null) {
+        else if (c.right == null) {
             if (isLeft) p.left = c.left;
             else p.right = c.left;
-        } else if (c.right != null){
-
+        } else {
+            Node r = c;
+            p = c;
+            c = c.right;
+            isLeft = false;
+            while (c.left != null) {
+                r = c;
+                c = c.left;
+                isLeft = true;
+            }
+            if (isLeft) r.left = c.right;
+            else r.right = c.right;
+            p.val = c.val;
         }
-
-        if (isLeft) p.left = c.left;
-        if (c.right == null) p.right = c.left;
     }
 
     public Node find(int val) {
