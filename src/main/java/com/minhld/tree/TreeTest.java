@@ -1,6 +1,15 @@
 package com.minhld.tree;
 
-public class TreeTest {
+public class TreeTest extends Thread {
+
+    public void run() {
+        createRegTree();
+    }
+
+    private void createRbTree() {
+
+    }
+
     /* a sample tree
                     63
           27                  80
@@ -10,9 +19,8 @@ public class TreeTest {
     14   17    54       58
                 55       60
     */
-
-    public static void main(String[] args) {
-        Tree t = new Tree(63);
+    private void createRegTree() {
+        BinaryTree t = new BinaryTree(63);
         t.insert(27);
         t.insert(80);
         t.insert(13);
@@ -39,5 +47,9 @@ public class TreeTest {
         t.print();
         // t.delete(58);
         // t.travel(t.root);
+    }
+
+    public static void main(String[] args) {
+        new TreeTest().start();
     }
 }
