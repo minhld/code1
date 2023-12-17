@@ -3,21 +3,33 @@ package com.minhld.tree;
 public class TreeTest extends Thread {
 
     public void run() {
-        createRegTree();
+        // createRegTree();
+        createRbTree();
     }
 
+    /*
+
+     */
     private void createRbTree() {
-
+        RBTree t = new RBTree(1);
+        t.insert(3);
+        t.insert(5);
+        t.insert(7);
+        t.insert(9);
+        t.insert(11);
+        t.insert(13);
+        t.insert(15);
+        t.print();
     }
 
-    /* a sample tree
-                    63
-          27                  80
-     13          51        70        92
-        18    33     61         82
-      15   20       57     62
-    14   17    54       58
-                55       60
+    /* a sample tree #1
+                         63
+             27                       80
+      13            51            70        92
+           18   33       61             82
+        15    20     57     62
+     14   17      54    58
+                    55     60
     */
     private void createRegTree() {
         BinaryTree t = new BinaryTree(63);
