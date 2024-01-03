@@ -21,7 +21,7 @@ public class Graph {
         vertexList[nVerts++] = new Vertex(lab);
     }
 
-    public void addEdge(int start, int end) {
+    public void addEdge(char A, char B) {
         adjMat[start][end] = 1;
         adjMat[end][start] = 1;
     }
