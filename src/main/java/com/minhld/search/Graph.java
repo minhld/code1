@@ -1,10 +1,15 @@
 package com.minhld.search;
 
+import com.minhld.easy.Stream;
+
+import java.util.Arrays;
+
 public class Graph {
-    private final int MAX_VERTS = 20;
-    private Vertex[] vertexList;
-    private int[][] adjMat;
+    public final int MAX_VERTS = 20;
+    private final Vertex[] vertexList;
+    private final int[][] adjMat;
     private int nVerts;
+    private Search searcher;
 
     public Graph() {
         vertexList = new Vertex[MAX_VERTS];
@@ -22,11 +27,21 @@ public class Graph {
     }
 
     public void addEdge(char A, char B) {
-        adjMat[start][end] = 1;
-        adjMat[end][start] = 1;
+        adjMat[A - 'A'][B - 'A'] = 1;
+        adjMat[B - 'A'][A - 'A'] = 1;
     }
 
     public void displayVertex(int v) {
         System.out.print(vertexList[v].label);
+    }
+
+    public void printEdges() {
+        Arrays.stream(adjMat)
+                .peek(a -> Arrays.stream(a).forEach(e -> System.out.print(" " + e)))
+                .forEach(l -> System.out.println());
+    }
+
+    public void search() {
+        searcher.search();
     }
 }
