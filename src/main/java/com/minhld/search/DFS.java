@@ -12,5 +12,30 @@ public class DFS extends Search {
 
     @Override
     public void search() {
+        Stack<Vertex> stack = new Stack<>();
+        // visit the first element
+        pushToStack(stack, vertexList[0]);
+        Vertex v;
+        boolean foundNext;
+        while (!stack.empty()) {
+            v = stack.peek();
+            foundNext = false;
+            for (int i = 0; i < vertexList.length; i++) {
+                if (adjMat[v.getLabel() - 'A'][i] == 1 && !vertexList[i].isWasVisited()) {
+                    pushToStack(stack, vertexList[i]);
+                    foundNext = true;
+                    break;
+                }
+            }
+            if (!foundNext) {
+                stack.pop();
+            }
+        }
+    }
+
+    private void pushToStack(Stack<Vertex> s, Vertex v) {
+        s.push(v);
+        v.setWasVisited(true);
+        System.out.print(v.getLabel() + " ");
     }
 }

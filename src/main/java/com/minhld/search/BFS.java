@@ -1,5 +1,7 @@
 package com.minhld.search;
 
+import java.util.Stack;
+
 /**
  * Deep-first Search
  */
@@ -8,9 +10,12 @@ public class BFS extends Search {
         super(vertexList, adjMat);
     }
 
-
     @Override
     public void search() {
-
+        Stack<Vertex> stack = new Stack<>();
+        Vertex v;
+        while (!stack.empty()) {
+            v = stack.pop();
+        }
     }
 }

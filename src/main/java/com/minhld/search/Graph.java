@@ -9,7 +9,6 @@ public class Graph {
     private final Vertex[] vertexList;
     private final int[][] adjMat;
     private int nVerts;
-    private Search searcher;
 
     public Graph() {
         vertexList = new Vertex[MAX_VERTS];
@@ -42,6 +41,7 @@ public class Graph {
     }
 
     public void search() {
+        Search searcher = new DFS(vertexList, adjMat);
         searcher.search();
     }
 }

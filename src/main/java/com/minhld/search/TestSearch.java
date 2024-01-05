@@ -9,6 +9,9 @@ public class TestSearch extends Thread {
         p.addVertex('D');
         p.addVertex('E');
         p.addVertex('F');
+        p.addVertex('G');
+        p.addVertex('H');
+        p.addVertex('I');
         p.addEdge('A', 'B');
         p.addEdge('B', 'F');
         p.addEdge('F', 'H');
@@ -19,6 +22,7 @@ public class TestSearch extends Thread {
         p.addEdge('A', 'E');
 
         // p.printEdges();
+        p.search();
     }
 
     public static void main(String[] args) {
