@@ -30,6 +30,10 @@ public class Graph {
         adjMat[B - 'A'][A - 'A'] = 1;
     }
 
+    public void addDirect(char A, char B) {
+        adjMat[A - 'A'][B - 'A'] = 1;
+    }
+
     public void displayVertex(int v) {
         System.out.print(vertexList[v].label);
     }
