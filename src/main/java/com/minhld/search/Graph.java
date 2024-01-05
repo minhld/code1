@@ -41,7 +41,7 @@ public class Graph {
     }
 
     public void search() {
-        Search searcher = new DFS(vertexList, adjMat);
+        Search searcher = new BFS(vertexList, adjMat); // new DFS(vertexList, adjMat);
         searcher.search();
     }
 }

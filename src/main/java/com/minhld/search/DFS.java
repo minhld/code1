@@ -13,7 +13,6 @@ public class DFS extends Search {
     @Override
     public void search() {
         Stack<Vertex> stack = new Stack<>();
-        // visit the first element
         pushToStack(stack, vertexList[0]);
         Vertex v;
         boolean foundNext;
