@@ -37,6 +37,7 @@ public class MakeSumDivisibleByP extends Thread {
                 for (int v : map.get(l)) {
                     if (v <= i + 1 && i - v < nums.length - 1) {
                         min = Math.min(min, i - v + 1);
+                        if (min == 0) return (int) min;
                     }
                 }
             }
