@@ -77,11 +77,30 @@ public class BinaryTree implements Tree {
         return null;
     }
 
+    public void travel() {
+        // preOrderTravel(root);
+        postOrderTravel(root);
+    }
+
     public void travel(Node n) {
         if (n == null) return;
         travel(n.left);
         System.out.print(n.val + " ");
         travel(n.right);
+    }
+
+    public void preOrderTravel(Node n) {
+        if (n == null) return;
+        System.out.print(n.val + " ");
+        preOrderTravel(n.left);
+        preOrderTravel(n.right);
+    }
+
+    public void postOrderTravel(Node n) {
+        if (n == null) return;
+        preOrderTravel(n.left);
+        preOrderTravel(n.right);
+        System.out.print(n.val + " ");
     }
 
     public void print() {

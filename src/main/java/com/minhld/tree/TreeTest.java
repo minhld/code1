@@ -4,7 +4,8 @@ public class TreeTest extends Thread {
 
     public void run() {
         // createRegTree();
-        createRbTree();
+        // createRbTree();
+        travelTest();
     }
 
     /*
@@ -57,8 +58,25 @@ public class TreeTest extends Thread {
         t.print();
         t.delete(15);
         t.print();
+        // t.travel();
         // t.delete(58);
         // t.travel(t.root);
+    }
+
+    /*
+     *                  63
+     *          27              80
+     *      13     51       70      92
+     */
+    private void travelTest() {
+        BinaryTree t = new BinaryTree(63);
+        t.insert(27);
+        t.insert(80);
+        t.insert(13);
+        t.insert(51);
+        t.insert(70);
+        t.insert(92);
+        t.travel();
     }
 
     public static void main(String[] args) {
