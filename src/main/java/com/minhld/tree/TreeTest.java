@@ -67,6 +67,7 @@ public class TreeTest extends Thread {
      *                  63
      *          27              80
      *      13     51       70      92
+     *     5   22         68   76
      */
     private void travelTest() {
         BinaryTree t = new BinaryTree(63);
@@ -76,6 +77,10 @@ public class TreeTest extends Thread {
         t.insert(51);
         t.insert(70);
         t.insert(92);
+        t.insert(5);
+        t.insert(22);
+        t.insert(68);
+        t.insert(76);
         t.travel();
     }
 

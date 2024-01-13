@@ -78,8 +78,8 @@ public class BinaryTree implements Tree {
     }
 
     public void travel() {
-        // preOrderTravel(root);
-        postOrderTravel(root);
+        preOrderTravel(root);
+        // postOrderTravel(root);
     }
 
     public void travel(Node n) {
