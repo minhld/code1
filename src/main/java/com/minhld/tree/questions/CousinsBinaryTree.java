@@ -1,6 +1,13 @@
 package com.minhld.tree.questions;
 
 public class CousinsBinaryTree {
+    /**
+     * O(logN)
+     * @param root
+     * @param x
+     * @param y
+     * @return
+     */
     public boolean isCousins(TreeNode root, int x, int y) {
         int[] r1 = findNode(root, root, x, 0);
         int[] r2 = findNode(root, root, y, 0);
