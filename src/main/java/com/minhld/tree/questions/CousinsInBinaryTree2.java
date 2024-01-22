@@ -14,8 +14,14 @@ public class CousinsInBinaryTree2 {
             count = queue.size();
             while (count > 0) {
                 c = queue.poll();
+                if (c == null) continue;
                 if (c.left != null) {
                     queue.add(c.left);
+                    map.computeIfAbsent(c.left,
+                            v -> {
+                                List<TreeNode> list = new ArrayList<>();
+                                return list;
+                            });
                 }
                 if (c.right != null) {
                     queue.add(c.right);
