@@ -20,12 +20,14 @@ public class CousinsInBinaryTree2 {
                     map.computeIfAbsent(c.left,
                             v -> {
                                 List<TreeNode> list = new ArrayList<>();
+                                // list.add(c.left);
                                 return list;
                             });
                 }
                 if (c.right != null) {
                     queue.add(c.right);
                 }
+                System.out.print(c);
                 count--;
             }
         }
