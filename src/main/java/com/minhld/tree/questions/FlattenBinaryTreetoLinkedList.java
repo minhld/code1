@@ -15,6 +15,17 @@ public class FlattenBinaryTreetoLinkedList {
         }
     }
 
+    private void traverse(TreeNode c) {
+        if (c == null) return;
+        System.out.print(c.val + " ");
+        if (c.left != null) {
+            traverse(c.left);
+        }
+        if (c.right != null) {
+            traverse(c.right);
+        }
+    }
+
     private void traverse(TreeNode c, TreeNode list) {
         if (c == null) return;
         list.left = null;
