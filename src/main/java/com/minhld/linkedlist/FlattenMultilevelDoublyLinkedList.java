@@ -24,4 +24,20 @@ public class FlattenMultilevelDoublyLinkedList {
         }
         return head;
     }
+
+    public Node flattenChild(Node p) {
+        Node c = p.child;
+        p.next = c;
+        p.child = null;
+        c.prev = p;
+        Node sc;
+        while (c != null) {
+            c = c.next;
+            if (c.child != null) {
+                sc = flattenChild(c);
+
+            }
+        }
+        return c;
+    }
 }
