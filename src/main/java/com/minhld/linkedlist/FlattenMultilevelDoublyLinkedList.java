@@ -2,42 +2,32 @@ package com.minhld.linkedlist;
 
 public class FlattenMultilevelDoublyLinkedList {
     public Node flatten(Node head) {
-        Node c = head, cc;
+        Node c = head;
         Node n;
         while (c != null) {
             if (c.child != null) {
-                n = c.next;
-                c.next = c.child;
-                c.child.prev = c;
-                cc = c.child;
-                while (cc != null) {
-                    if (cc.next != null) {
-                        cc = cc.next;
-                    } else {
-                        cc.next = n;
-                        n.prev = cc;
-                        break;
-                    }
-                }
+                flattenChild(c);
             }
             c = c.next;
         }
         return head;
     }
 
-    public Node flattenChild(Node p) {
+    void flattenChild(Node p) {
         Node c = p.child;
-        p.next = c;
         p.child = null;
+        Node n = p.next;
+        p.next = c;
         c.prev = p;
-        Node sc;
         while (c != null) {
-            c = c.next;
             if (c.child != null) {
-                sc = flattenChild(c);
-
+                flattenChild(c);
+            }
+            if (c.next != null) {
+                c = c.next;
+            } else {
+                c.next = n;
             }
         }
-        return c;
     }
 }
