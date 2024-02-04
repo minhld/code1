@@ -14,10 +14,10 @@ public class FlattenMultilevelDoublyLinkedList {
     }
 
     void flattenChild(Node p) {
+        Node n = p.next;
+        p.next = p.child;
         Node c = p.child;
         p.child = null;
-        Node n = p.next;
-        p.next = c;
         c.prev = p;
         while (c != null) {
             if (c.child != null) {
@@ -27,6 +27,8 @@ public class FlattenMultilevelDoublyLinkedList {
                 c = c.next;
             } else {
                 c.next = n;
+                n.prev = c;
+                c = null;
             }
         }
     }
