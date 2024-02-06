@@ -27,7 +27,7 @@ public class FlattenMultilevelDoublyLinkedList {
                 c = c.next;
             } else {
                 c.next = n;
-                n.prev = c;
+                if (n != null) n.prev = c;
                 c = null;
             }
         }
