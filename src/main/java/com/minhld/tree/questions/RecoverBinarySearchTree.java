@@ -1,10 +1,12 @@
 package com.minhld.tree.questions;
 
+import com.minhld.tree.Tree;
+
 import java.util.Stack;
 
 public class RecoverBinarySearchTree extends Thread {
     public void run() {
-
+        recoverTree(new TreeNode());
     }
 
     public void recoverTree(TreeNode root) {
