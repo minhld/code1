@@ -1,31 +1,41 @@
 package com.minhld.tree.questions;
 
-import com.minhld.tree.Tree;
-
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RecoverBinarySearchTree extends Thread {
     public void run() {
-        recoverTree(new TreeNode());
+        Integer[] samples = { 1, 3, null, null, 2 };
+        TreeNode root = Utils.buildTree(samples);
+        recoverTree(root);
     }
 
     public void recoverTree(TreeNode root) {
-        Stack<TreeNode> stack = new Stack<>();
         TreeNode c = root;
-        compare(root, 0, Integer.MAX_VALUE);
-
+        List<TreeNode> list = new ArrayList<>();
+        fetch(c, list);
+        fix(list);
     }
 
-    void compare(TreeNode c, int min, int max) {
-        if (c.left != null && c.left.val > max) {
-            System.out.println(c.left.val);
-        }
-        if (c.right != null && c.right.val < min)
-            if (c.left != null && c.val > c.left.val) {
-                compare(c.left, c.left.val, max);
+    void fetch(TreeNode c, List<TreeNode> list) {
+        if (c == null) return;
+        fetch(c.left, list);
+        list.add(c);
+        fetch(c.right, list);
+    }
+
+    void fix(List<TreeNode> list) {
+        int i = list.size() - 1;
+        while (i > 0) {
+            if (list.get(i - 1).val > list.get(i).val) {
+                TreeNode c = list.get(i);
+                while (i > 0 && list.get(i - 1).val > c.val) i--;
+                int temp = c.val;
+                c.val = list.get(i).val;
+                list.get(i).val = temp;
+                return;
             }
-        if (c.right != null && c.val < c.right.val) {
-            compare(c.right, min, c.right.val);
+            i--;
         }
     }
 
