@@ -9,7 +9,12 @@ import java.util.Map;
 
 public class LinkedListInBinaryTree extends Thread {
     public void run() {
+        Integer[] linkedListSamples = { 1,4,2,6,8 };
 
+        ListNode head = Utils.buildLinkedList(linkedListSamples);
+        Integer[] samples = { 1,4,4,null,2,2,null,1,null,6,8,null,null,null,null,1,3 };
+        TreeNode root = Utils.buildTree(samples);
+        System.out.println("res = " + isSubPath(head, root));
     }
 
     public static void main(String[] args) {
@@ -31,12 +36,14 @@ public class LinkedListInBinaryTree extends Thread {
     }
 
     void search(Map<Integer, List<TreeNode>> map, ListNode c, Integer count) {
-        if (c == null) return;
-        List<TreeNode> list;
         if (map.containsKey(c.val)) {
             count++;
-            for (TreeNode n : map.get(c.val)) {
-                search(map, c.next, count);
+            if (c.next != null) {
+                for (TreeNode n : map.get(c.val)) {
+                    if (n.val == c.next.val) {
+                        search(map, c.next, count);
+                    }
+                }
             }
         }
     }
@@ -44,11 +51,11 @@ public class LinkedListInBinaryTree extends Thread {
     void fetch(TreeNode c, Map<Integer, List<TreeNode>> p) {
         if (c == null) return;
         if (c.left != null) {
-            p.computeIfAbsent(c.val, k -> new ArrayList<>()).add(c.left);
+            fetch(c.left, p);
         }
         p.computeIfAbsent(c.val, k -> new ArrayList<>()).add(c);
         if (c.right != null) {
-            p.computeIfAbsent(c.val, k -> new ArrayList<>()).add(c.right);
+            fetch(c.right, p);
         }
     }
 }
