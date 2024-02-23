@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class LinkedListInBinaryTree extends Thread {
     public void run() {
-        Integer[] linkedListSamples = { 1,4,2,6,8 };
+        Integer[] linkedListSamples = { 1,4,2,6,9 };
 
         ListNode head = Utils.buildLinkedList(linkedListSamples);
         Integer[] samples = { 1,4,4,null,2,2,null,1,null,6,8,null,null,null,null,1,3 };
@@ -24,9 +24,8 @@ public class LinkedListInBinaryTree extends Thread {
     public boolean isSubPath(ListNode head, TreeNode root) {
         Map<Integer, List<TreeNode>> map = new HashMap<>();
         fetch(root, map);
-        Integer count = 0;
         ListNode c = head;
-        search(map, c, count);
+        int count = search(map, c, 0);
         int total = 0;
         while (head != null) {
             head = head.next;
@@ -35,17 +34,18 @@ public class LinkedListInBinaryTree extends Thread {
         return count == total;
     }
 
-    void search(Map<Integer, List<TreeNode>> map, ListNode c, Integer count) {
+    int search(Map<Integer, List<TreeNode>> map, ListNode c, Integer count) {
         if (map.containsKey(c.val)) {
             count++;
-            if (c.next != null) {
-                for (TreeNode n : map.get(c.val)) {
+            if (c.next != null && map.containsKey(c.next.val)) {
+                for (TreeNode n : map.get(c.next.val)) {
                     if (n.val == c.next.val) {
-                        search(map, c.next, count);
+                        return search(map, c.next, count);
                     }
                 }
             }
         }
+        return count;
     }
 
     void fetch(TreeNode c, Map<Integer, List<TreeNode>> p) {
