@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class LinkedListInBinaryTree extends Thread {
     public void run() {
-        Integer[] linkedListSamples = { 1,4,2,6,9 };
+        Integer[] linkedListSamples = { 1,4,2,6,8 };
 
         ListNode head = Utils.buildLinkedList(linkedListSamples);
         Integer[] samples = { 1,4,4,null,2,2,null,1,null,6,8,null,null,null,null,1,3 };
@@ -40,7 +40,7 @@ public class LinkedListInBinaryTree extends Thread {
             if (c.next != null && map.containsKey(c.next.val)) {
                 for (TreeNode n : map.get(c.next.val)) {
                     if (n.val == c.next.val) {
-                        return search(map, c.next, count);
+                        search(map, c.next, count);
                     }
                 }
             }
