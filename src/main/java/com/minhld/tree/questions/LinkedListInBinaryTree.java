@@ -34,18 +34,15 @@ public class LinkedListInBinaryTree extends Thread {
         return count == total;
     }
 
-    int search(Map<Integer, List<TreeNode>> map, ListNode c, Integer count) {
-        if (map.containsKey(c.val)) {
-            count++;
-            if (c.next != null && map.containsKey(c.next.val)) {
-                for (TreeNode n : map.get(c.next.val)) {
-                    if (n.val == c.next.val) {
-                        search(map, c.next, count);
-                    }
-                }
+    int search(List<TreeNode> list, ListNode c) {
+        if (c == null) return 0;
+        TreeNode n;
+        for (int i = 0; i < list.size(); i++) {
+            n = list.get(i);
+            if (n.val == c.val) {
+                search(list, c.next);
             }
         }
-        return count;
     }
 
     void fetch(TreeNode c, Map<Integer, List<TreeNode>> p) {
