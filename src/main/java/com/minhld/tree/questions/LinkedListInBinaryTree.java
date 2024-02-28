@@ -24,25 +24,33 @@ public class LinkedListInBinaryTree extends Thread {
     public boolean isSubPath(ListNode head, TreeNode root) {
         Map<Integer, List<TreeNode>> map = new HashMap<>();
         fetch(root, map);
-        ListNode c = head;
-        int count = search(map, c, 0);
-        int total = 0;
-        while (head != null) {
-            head = head.next;
-            total++;
-        }
-        return count == total;
-    }
-
-    int search(List<TreeNode> list, ListNode c) {
-        if (c == null) return 0;
-        TreeNode n;
-        for (int i = 0; i < list.size(); i++) {
-            n = list.get(i);
-            if (n.val == c.val) {
-                search(list, c.next);
+        List<TreeNode> list = map.get(head.val);
+        for (TreeNode n : list) {
+            if (search(n, head)) {
+                return true;
             }
         }
+        return false;
+    }
+
+    boolean search(TreeNode n, ListNode c) {
+        if (c != null && n.val != c.val) {
+            return false;
+        } else if (c != null && n.val == c.val) {
+            if (n.left != null) {
+                if (!search(n.left, c.next)) {
+                    return false;
+                }
+            }
+            if (n.right != null) {
+                if (!search(n.right, c.next)) {
+                    return false;
+                }
+            }
+        } else if (c == null) {
+            return true;
+        }
+        return true;
     }
 
     void fetch(TreeNode c, Map<Integer, List<TreeNode>> p) {
