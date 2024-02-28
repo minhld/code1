@@ -9,8 +9,7 @@ import java.util.Map;
 
 public class LinkedListInBinaryTree extends Thread {
     public void run() {
-        Integer[] linkedListSamples = { 1,4,2,6,8 };
-
+        Integer[] linkedListSamples = { 1,4,2,6 };
         ListNode head = Utils.buildLinkedList(linkedListSamples);
         Integer[] samples = { 1,4,4,null,2,2,null,1,null,6,8,null,null,null,null,1,3 };
         TreeNode root = Utils.buildTree(samples);
@@ -34,23 +33,19 @@ public class LinkedListInBinaryTree extends Thread {
     }
 
     boolean search(TreeNode n, ListNode c) {
-        if (c != null && n.val != c.val) {
+        if ((c != null && n.val != c.val) ||
+                (c != null && c.next != null && n.left == null && n.right == null)) {
             return false;
-        } else if (c != null && n.val == c.val) {
-            if (n.left != null) {
-                if (!search(n.left, c.next)) {
-                    return false;
-                }
-            }
-            if (n.right != null) {
-                if (!search(n.right, c.next)) {
-                    return false;
-                }
-            }
-        } else if (c == null) {
-            return true;
         }
-        return true;
+        if (c == null || n.left == null && n.right == null) return true;
+        boolean l = false, r = false;
+        if (n.left != null) {
+            l = search(n.left, c.next);
+        }
+        if (n.right != null) {
+            r = search(n.right, c.next);
+        }
+        return l || r;
     }
 
     void fetch(TreeNode c, Map<Integer, List<TreeNode>> p) {
