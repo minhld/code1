@@ -57,5 +57,6 @@ public class LinkedListInBinaryTree extends Thread {
         if (c.right != null) {
             fetch(c.right, p);
         }
+
     }
 }
