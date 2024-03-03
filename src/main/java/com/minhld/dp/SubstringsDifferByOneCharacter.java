@@ -9,7 +9,12 @@ public class SubstringsDifferByOneCharacter {
                 if (s.charAt(i) == t.charAt(j)) {
                     dp[i + 1][j + 1] = dp[i][j] == 0 ? 0 : dp[i][j];
                 } else {
-                    dp[i + 1][j + 1] = dp[i][j] == 0 ? Math.min(i + 1, j + 1) : 1;
+                    int k = i - 1, l = j - 1;
+                    dp[i + 1][j + 1] = 1;
+                    while (k >= 0 && l >= 0 && s.charAt(k) == t.charAt(l)) {
+                        dp[i + 1][j + 1]++;
+                        k--; l--;
+                    }
                 }
                 total += dp[i + 1][j + 1];
             }
