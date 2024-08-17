@@ -24,11 +24,7 @@ public class TrieNode {
         if (word == null || word.isEmpty())
             return;
         char firstChar = word.charAt(0);
-        TrieNode child = children.get(firstChar);
-        if (child == null) {
-            child = new TrieNode(firstChar);
-            children.put(firstChar, child);
-        }
+        TrieNode child = children.computeIfAbsent(firstChar, TrieNode::new);
         if (word.length() > 1) {
             child.insert(word.substring(1));
         } else {

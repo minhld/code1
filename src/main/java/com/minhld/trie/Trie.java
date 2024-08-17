@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Trie {
-    private TrieNode root;
+    private final TrieNode root;
 
     public Trie(List<String> words) {
         root = new TrieNode();
