@@ -1,12 +1,20 @@
 package com.minhld.stream;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class test {
     public static void main(String args[]) {
-        //testMap1();
-        testStringBuffer();
+        // testMap1();
+        // testStringBuffer();
+        testMaps();
+    }
+
+    private static void testMaps() {
+        Set<Integer> set = Set.of(1, 3, 5, 7, 9);
+        Map<Integer, Integer> map = set.stream().collect(Collectors.toMap(i -> i * 2, Function.identity(), (a1, a2) -> a1));
+        map.forEach((k, v) -> System.out.println("k = " + k + ", v = " + v));
     }
 
     private static void testStringBuffer() {
