@@ -14,6 +14,7 @@ public class test {
     private static void testMaps() {
         Set<Integer> set = Set.of(1, 3, 5, 7, 9);
         Map<Integer, Integer> map = set.stream().collect(Collectors.toMap(i -> i * 2, Function.identity(), (a1, a2) -> a1));
+        set.stream().reduce(0, (n1, n2) -> n1 + n2,
         map.forEach((k, v) -> System.out.println("k = " + k + ", v = " + v));
     }
 

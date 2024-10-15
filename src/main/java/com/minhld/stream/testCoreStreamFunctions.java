@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.util.Arrays;
 import java.util.function.*;
 
-public class testSuppliers extends Thread {
+public class testCoreStreamFunctions extends Thread {
     public void run() {
         // testSupplier();
 
@@ -63,6 +63,6 @@ public class testSuppliers extends Thread {
     }
 
     public static void main(String[] args) {
-        new testSuppliers().start();
+        new testCoreStreamFunctions().start();
     }
 }
