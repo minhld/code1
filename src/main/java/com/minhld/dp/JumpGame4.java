@@ -6,10 +6,7 @@ import org.apache.commons.io.IOUtils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class JumpGame4 extends Thread {
@@ -20,6 +17,12 @@ public class JumpGame4 extends Thread {
         int k = 90000;
         // 212070373
         // 212070827
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(1);
+        Integer val = queue.peek();
+        Stack<Integer> stack = new Stack<>();
+        stack.add(1);
+        Integer val2 = stack.pop();
         System.out.println("Max is " + maxResult(nums, k));
     }
 
