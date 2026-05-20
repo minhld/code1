@@ -2,25 +2,29 @@ package com.minhld.hard;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
+/**
+ * this solution works but has time exceeded
+ */
 public class WordSearch2 {
 
     public List<String> findWords(char[][] board, String[] words) {
         List<String> res = new ArrayList<>();
-        int[][] mark = new int[board.length][board[0].length];  // array to store visited cells
+        int[][] mark;  // array to store visited cells
         List<String> wordList = new ArrayList<>(Arrays.asList(words));
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
-                // for (int k = 0; k < words.length; k++) {
-                //     if (wordFound[k] == 0) {
-                //         mark = new int[board.length][board[0].length];
-                //         if (scanWord(words[k], board, mark, i, j, 0)) {
-                //             res.add(words[k]);
-                //             wordFound[k] = 1;
-                //         }
-                //     }
-                // }
+                Iterator<String> it = wordList.iterator();
+                while (it.hasNext()) {
+                    String w = it.next();
+                    mark = new int[board.length][board[0].length];
+                    if (scanWord(w, board, mark, i, j, 0)) {
+                        res.add(w);
+                        it.remove();
+                    }
+                }
             }
         }
         return res;
