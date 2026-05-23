@@ -13,9 +13,10 @@ public class AddAndSearchWordsDataStructureTest {
     public static void main(String[] args) throws IOException {
         TestInput input = args.length == 0 ? defaultInput() : readInput(Path.of(args[0]));
         List<Boolean> results = run(input.operations, input.params);
-        System.out.println(results);
         if (input.expected != null) {
-            compare(results, input.expected);
+            compare(results, input.expected, input.operations, input.params);
+        } else {
+            System.out.println(results);
         }
     }
 
@@ -41,7 +42,7 @@ public class AddAndSearchWordsDataStructureTest {
         return results;
     }
 
-    private static void compare(List<Boolean> actual, List<Boolean> expected) {
+    private static void compare(List<Boolean> actual, List<Boolean> expected, String[] operations, String[][] params) {
         if (actual.size() != expected.size()) {
             System.out.println("Size mismatch: actual=" + actual.size() + ", expected=" + expected.size());
         }
@@ -52,6 +53,7 @@ public class AddAndSearchWordsDataStructureTest {
                 System.out.println("Mismatch at index " + i
                         + ": actual=" + actual.get(i)
                         + ", expected=" + expected.get(i));
+                printMismatchContext(i, operations, params);
                 return;
             }
         }
@@ -63,6 +65,52 @@ public class AddAndSearchWordsDataStructureTest {
 
     private static boolean same(Boolean a, Boolean b) {
         return a == b || a != null && a.equals(b);
+    }
+
+    private static void printMismatchContext(int index, String[] operations, String[][] params) {
+        System.out.println("Operation: " + operations[index]);
+        if (params[index].length > 0) {
+            System.out.println("Param: " + params[index][0]);
+        }
+
+        if (!"search".equals(operations[index]) || params[index].length == 0) {
+            return;
+        }
+
+        String pattern = params[index][0];
+        List<String> matchingWords = new ArrayList<>();
+        List<String> recentWords = new ArrayList<>();
+
+        for (int i = 0; i < index; i++) {
+            if (!"addWord".equals(operations[i]) || params[i].length == 0) {
+                continue;
+            }
+
+            String word = params[i][0];
+            recentWords.add(word);
+            if (matches(pattern, word)) {
+                matchingWords.add(word);
+            }
+        }
+
+        System.out.println("Matching added words before index " + index + ": " + matchingWords);
+        int from = Math.max(0, recentWords.size() - 10);
+        System.out.println("Last added words before index " + index + ": " + recentWords.subList(from, recentWords.size()));
+    }
+
+    private static boolean matches(String pattern, String word) {
+        if (pattern.length() != word.length()) {
+            return false;
+        }
+
+        for (int i = 0; i < pattern.length(); i++) {
+            char p = pattern.charAt(i);
+            if (p != '.' && p != word.charAt(i)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private static TestInput defaultInput() throws IOException {
