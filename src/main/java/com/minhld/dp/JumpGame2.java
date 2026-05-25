@@ -14,20 +14,13 @@ public class JumpGame2 extends Thread {
 
     public int jump(int[] nums) {
         int len = nums.length;
-        int[][] dp = new int[len + 1][len + 1];
-        dp[0][0] = 0;
-        for (int i = 0; i < len - 1; i++) {
-            for (int j = i + 1; j <= i + nums[i] && j < len; j++) {
-                dp[i][j] = 1;
-            }
-        }
         int[] min = new int[len + 1];
         min[0] = 0;
         min[1] = 1;
         for (int i = 1; i < len; i++) {
             min[i] = Integer.MAX_VALUE;
             for (int j = i - 1; j >= 0; j--) {
-                if (dp[j][i] == 1) {
+                if (j + nums[j] >= i) {
                     min[i] = Math.min(min[i], min[j]) + 1;
                 }
             }
