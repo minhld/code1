@@ -6,15 +6,15 @@ public class InterleavingString extends Thread {
     }
     @Override
     public void run() {
-        String s1 = "aabcc";
-        String s2 = "dbbca";
-        String s3 = "aadbbcbcac";
+//        String s1 = "aabcc";
+//        String s2 = "dbbca";
+//        String s3 = "aadbbcbcac";
 //        String s1 = "accbaabaaabbcbaacbababacaababbcbabaababcaabbbbbcacbaa";
 //        String s2 = "cabaabcbabcbaaaacababccbbccaaabaacbbaaabccacabaaccbbcbcb";
 //        String s3 = "accbcaaabbaabaaabbcbcbabacbacbababaacaaaaacbabaabbcbccbbabbccaaaaabaabcabbcaabaaabbcbcbbbcacabaaacccbbcbbaacb";
-//        String s1 = "aaaaaaaaaaaaaaaaaaaaaaaaaaa";
-//        String s2 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-//        String s3 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        String s1 = "aaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        String s2 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        String s3 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
         System.out.println("res = " + isInterleave(s1, s2, s3));
     }
 
