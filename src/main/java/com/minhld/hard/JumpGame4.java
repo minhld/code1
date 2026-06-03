@@ -16,15 +16,31 @@ public class JumpGame4 extends Thread {
             ArrayList<Integer> e = m.computeIfAbsent(arr[i], k -> new ArrayList<>());
             e.add(i);
         }
-        Queue<Integer> q = new LinkedList<>();
+        Queue<Integer> q = new ArrayDeque<>();
+        boolean[] visited = new boolean[arr.length];
         q.add(0);
+        visited[0] = true;
         int len = 1, count = 0;
         while (!q.isEmpty()) {
             int i =  q.poll();
             if (i == arr.length - 1) return count;
-            if (i - 1 >= 0) q.add(i - 1);
-            if (i + 1 < arr.length) q.add(i + 1);
-            q.addAll(m.get(arr[i]));
+            if (i - 1 >= 0 && !visited[i - 1]) {
+                visited[i - 1] = true;
+                q.add(i - 1);
+            }
+            if (i + 1 < arr.length && !visited[i + 1]) {
+                visited[i + 1] = true;
+                q.add(i + 1);
+            }
+            List<Integer> rml = m.remove(arr[i]);
+            if (rml != null) {
+                rml.forEach(v -> {
+                    if (!visited[v]) {
+                        visited[v] = true;
+                        q.add(v);
+                    }
+                });
+            }
             if (--len == 0) {
                 len = q.size();
                 count++;
