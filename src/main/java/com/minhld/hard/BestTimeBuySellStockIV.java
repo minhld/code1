@@ -10,7 +10,7 @@ public class BestTimeBuySellStockIV extends Thread{
     }
 
     public int maxProfit(int k, int[] prices) {
-
+        return 1;
     }
 
     public static void main(String[] args) {
