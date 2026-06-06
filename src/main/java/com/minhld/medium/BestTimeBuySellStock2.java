@@ -20,11 +20,14 @@ public class BestTimeBuySellStock2 extends Thread {
     }
 
     public int maxProfit(int[] p) {
-        int profit = 0;
-        for (int i = 1; i < p.length; i++) {
-            profit += Math.max(0, p[i] - p[i - 1]);
+        int n = p.length;
+        int[] dp = new int[n + 1];
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+                dp[i + 1] = Math.max(dp[i + 1], dp[j + 1] + Math.max(0, p[i] - p[j]));
+            }
         }
-        return profit;
+        return dp[n];
     }
 
     public static void main(String[] args) {
