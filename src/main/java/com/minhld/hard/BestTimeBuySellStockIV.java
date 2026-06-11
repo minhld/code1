@@ -21,7 +21,7 @@ public class BestTimeBuySellStockIV extends Thread{
                 if (j == i || prices[i] - prices[j] <= 0) {
                     dp[i + 1][j + 1] = dp[j + 1][j + 1];
                 } else if (prices[i] - prices[j] > 0) {
-                    dp[i + 1][j + 1] = new Stock(dp[j][j].p + prices[i] - prices[j], dp[j][j].t + 1);
+                    dp[i + 1][j + 1] = new Stock(dp[i][j + 1].p + dp[j][j].p + prices[i] - prices[j], dp[i][j + 1].t + 1);
                 }
                 if (dp[i + 1][j + 1].t <= k) {
                     max = Math.max(max, dp[i + 1][j + 1].p);
@@ -31,6 +31,7 @@ public class BestTimeBuySellStockIV extends Thread{
 
         return max;
     }
+
 
     public static class Stock {
         int p;  // total profit
