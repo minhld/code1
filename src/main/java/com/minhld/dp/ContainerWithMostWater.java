@@ -8,6 +8,15 @@ public class ContainerWithMostWater extends Thread {
         System.out.println("H = " + maxArea(h));
     }
 
+    public int maxArea(int[] h) {
+        int l = 0, r = h.length - 1, max = 0;
+        while (l < r) {
+            max = Math.max(max, Math.min(h[l], h[r]) * (r - l));
+            if (h[l] < h[r]) l++;
+            else r--;
+        }
+        return max;
+    }
 
     /**
      * bruteforce solution
@@ -15,7 +24,7 @@ public class ContainerWithMostWater extends Thread {
      * @param h height
      * @return max water capacity
      */
-    public int maxArea(int[] h) {
+    public int maxArea2(int[] h) {
         int len = h.length;
         int max = 0;
         for (int i = 1; i < len; i++) {
