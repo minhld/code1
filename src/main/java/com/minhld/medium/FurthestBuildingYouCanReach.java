@@ -1,6 +1,9 @@
 package com.minhld.medium;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class FurthestBuildingYouCanReach extends Thread {
     public void run() {
@@ -11,6 +14,30 @@ public class FurthestBuildingYouCanReach extends Thread {
         System.out.println("res= " + furthestBuilding(h, b, l));
     }
 
+    /*
+            20
+        19       18
+     7     3  2     12
+   3   4
+     */
+
+
+    public int furthestBuilding(int[] h, int b, int l) {
+        int[] dp = new int[h.length + 1];
+        Queue<Integer> q = new PriorityQueue<>(Collections.reverseOrder());
+
+        for (int i = 0; i < h.length; i++) {
+            q.add(h[i]);
+        }
+
+        for (int i = q.size(); i > 0; i--) {
+            System.out.println("q val = " + q.poll());
+        }
+
+        return 0;
+    }
+
+    /*
     public int furthestBuilding(int[] h, int b, int l) {
         return maxSteps(h, 0, b, l);
     }
@@ -27,6 +54,7 @@ public class FurthestBuildingYouCanReach extends Thread {
                     maxSteps(h, i + 1, b - (h[i + 1] - h[i]), l),
                     maxSteps(h, i + 1, b, l - 1));
     }
+    */
 
     public static void main(String[] args) {
         new FurthestBuildingYouCanReach().start();
