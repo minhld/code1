@@ -1,7 +1,5 @@
 package com.minhld.dp;
 
-import java.util.Arrays;
-
 public class HouseRobber extends Thread {
     public void run() {
         int[] nums = { 10,7,1,11,1 };
