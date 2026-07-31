@@ -1,7 +1,5 @@
 package com.minhld.hard;
 
-import java.util.Arrays;
-
 public class CountSubstringsContainStringII extends Thread {
     public void run() {
         String w1 = "bcca";
@@ -9,6 +7,36 @@ public class CountSubstringsContainStringII extends Thread {
         System.out.println("res = " + validSubstringCount(w1, w2));
     }
 
+    public long validSubstringCount(String word1, String word2) {
+        if (word2.length() > word1.length()) return 0;
+
+        char[] w1s = word1.toCharArray();
+        char[] w2s = word2.toCharArray();
+        int w1len = w1s.length, w2len = w2s.length;
+
+        long ret = 0;
+        int[] v2 = new int[26];
+        for (char c : w2s) v2[c - 'a']++;
+
+        int l = 0, missing = w2len;
+        for (int r = 0; r < w1len; r++) {
+            int right = w1s[r] - 'a';
+            if (v2[right] > 0) missing--;
+            v2[right]--;
+
+            while (missing == 0) {
+                ret += w1len - r;
+
+                int left = w1s[l] - 'a';
+                v2[left]++;
+                if (v2[left] > 0) missing++;
+                l++;
+            }
+        }
+        return ret;
+    }
+
+    /*
     public long validSubstringCount(String word1, String word2) {
         if (word2.length() > word1.length()) return 0;
 
@@ -37,7 +65,6 @@ public class CountSubstringsContainStringII extends Thread {
         return ret;
     }
 
-    /*
     public long validSubstringCount(String word1, String word2) {
         if (word2.length() > word1.length()) return 0;
 
@@ -49,16 +76,19 @@ public class CountSubstringsContainStringII extends Thread {
         int[] v2 = new int[26];
         for (char c : w2s) v2[c - 'a']++;
 
-        for (int i = 0; i <= w1len - w2len; i++) {
-            int[] v1 = new int[26];
+        int l = 0, missing = w2len;
+        for (int r = 0; r < w1len; r++) {
+            int right = w1s[r] - 'a';
+            if (v2[right] > 0) missing--;
+            v2[right]--;
 
-            for (int k = i; k < w1len; k++) {
-                v1[w1s[k] - 'a']++;
+            while (missing == 0) {
+                ret += w1len - r;
 
-                if (k - i + 1 >= w2len && isContains(v1, v2)) {
-                    ret += w1len - k;
-                    break;
-                }
+                int left = w1s[l] - 'a';
+                v2[left]++;
+                if (v2[left] > 0) missing++;
+                l++;
             }
         }
         return ret;
@@ -91,7 +121,6 @@ public class CountSubstringsContainStringII extends Thread {
         }
         return ret;
     }
-    */
 
     private boolean isContains(int[] v1, int[] v2) {
         for (int i = 0; i < v1.length; i++) {
@@ -99,6 +128,7 @@ public class CountSubstringsContainStringII extends Thread {
         }
         return true;
     }
+    */
 
     public static void main(String[] args) {
         new CountSubstringsContainStringII().start();
